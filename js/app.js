@@ -18,89 +18,91 @@
  * Great to have comments before crucial code sections within the procedure.
  */
 
-//* Define Global Variables
 const navParent = document.getElementById("navbar__list");
-const sectionHeader = document.createElement("h2");
-const firstPara = document.createElement("p");
-const secondPara = document.createElement("p");
-const main = document.getElementsByTagName("main");
-const body = document.getElementsByTagName("body");
+const body = document.getElementsByTagName("body")[0];
 const noSections = document.getElementsByTagName("section");
-const navbarMenu = document.getElementsByClassName("navbar__menu");
-const html = document.getElementsByTagName("html");
-//* End Global Variables
+const html = document.getElementsByTagName("html")[0];
+const head = document.getElementsByTagName("head")[0];
+const css = "a:hover {background-color: red;}";
+const style = document.createElement("style");
 
-//* Start Helper Functions
-html[0].style.scrollBehavior = "smooth";
+html.style.scrollBehavior = "smooth";
 
 function makeActive() {
   for (const section of noSections) {
     const box = section.getBoundingClientRect();
-    //Find a value that works best, but 150 seems to be a good start.
+
     if (box.top <= 150 && box.bottom >= 150) {
-      section.classList.add("active");
-      console.log("test1");
+      section.classList.add("your-active-class");
+      const navItems = document.querySelectorAll("#navbar__list li");
+      navItems.forEach((item, index) => {
+        // check if the index of section equal the li
+        // if true then i have to highlighted the li
+        if (index === Array.from(noSections).indexOf(section)) {
+          item.classList.add("active-nav");
+        } else {
+          item.classList.remove("active-nav");
+        }
+      });
     } else {
-      section.classList.remove("active");
-      console.log("test2");
+      section.classList.remove("your-active-class");
     }
   }
 }
-//* End Helper Functions
-
-//* begin Main Functions
-
 for (let i = 0; i < noSections.length; i++) {
   const anc = document.createElement("a");
   const navChild = document.createElement("li");
   anc.innerText = `Section ${i + 1}`;
+  anc.addEventListener("click", function (e) {
+    e.preventDefault();
+    window.scrollTo({
+      top: noSections[i].offsetTop,
+      behavior: "smooth",
+    });
+  });
   navChild.appendChild(anc);
   navParent.appendChild(navChild);
 }
 
 document.querySelector(".navbar__menu").style.cssText = `
-        background-color: #222;
-        overflow: hidden;
-    `;
+  background-color: #fff;
+  overflow: hidden;
+`;
 
 document.querySelector(".navbar__menu ul").style.cssText = `
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-    `;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+`;
 
 const navbarItems = document.querySelectorAll(".navbar__menu li");
 navbarItems.forEach((item) => {
   item.style.cssText = `
-            float: left;
-        `;
+    float: left;
+  `;
 
   item.querySelector("a").style.cssText = `
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            cursor: pointer;
-        `;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    cursor: pointer;
+    color: black; 
+  `;
 });
 
-//* build the nav
+style.innerHTML = `
+  a:hover {
+    background-color: #E6D5D2;
+    transition: 0.3s;
+  }
+  .active-nav a {
+    background-color: #E6D5D2;
+    color: white;
+  }
+`;
+head.appendChild(style);
 
-// Add class 'active' to section when near top of viewport
-body[0].addEventListener("onscroll", makeActive);
-
-// Scroll to anchor ID using scrollTO event
-
-/**
- * End Main Functions
- * Begin Events
- *
- */
-
-// Build menu
-
-// Scroll to section on link click
-
-// Set sections as active
+window.addEventListener("scroll", makeActive);
