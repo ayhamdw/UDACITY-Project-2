@@ -46,4 +46,4 @@ We welcome contributions to improve this project. Here’s how you can contribut
 
 ## The Quote of the day
 
-### Experience is the name everyone gives to their mistakes
+### Experience is the name everyone gives to their mistakes.
