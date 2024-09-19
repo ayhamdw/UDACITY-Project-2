@@ -34,15 +34,6 @@ git clone https://github.com/ayhamdw/UDACITY-Project-2.git
 2. **Navigation:** Use the navigation bar to scroll to different sections of the page.
 3. **Interactivity:** Notice how the active section is highlighted in the navigation bar and how the section itself stands out when in view.
 
-## Contributing
-
-We welcome contributions to improve this project. Here’s how you can contribute:
-
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/your-feature`).
-3. Make your changes and commit them (`git commit -m 'Add some feature'`).
-4. Push to the branch (`git push origin feature/your-feature`).
-5. Open a Pull Request.
 
 ## The Quote of the day
 
