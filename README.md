@@ -25,7 +25,7 @@ This project is part of the Udacity Front-End Web Developer Nanodegree program. 
 To get started with this project, clone the repository and open the `index.html` file in your preferred web browser.
 
 ```sh
-git clone <https://github.com/ayhamdw/UDACITY-Project-2.git>
+git clone https://github.com/ayhamdw/UDACITY-Project-2.git
 ```
 
 ## Usage
